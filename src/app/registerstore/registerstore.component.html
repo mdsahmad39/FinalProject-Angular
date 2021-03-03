@@ -1,0 +1,81 @@
+<h1 id="title"><u>Seller Registration Page</u></h1>
+<section class="container">
+ <div class="register-block col-lg-6 offset-md-2 offset-lg-3">
+  <form #registerForm="ngForm" (ngSubmit)="submitRegisterForm(registerForm.value)" novalidate>
+
+   <label for="storeName" class="text-uppercase">Store Name:</label>
+   <input type="text" name="storeName" placeholder="Store Name..." class="form-control" #storeName="ngModel" ngModel
+    required>
+   <div *ngIf="storeName.errors?.required" class="warning-text">*Enter Store Name</div>
+   <br>
+
+   <label for="sellerName" class="text-uppercase">Seller Name:</label>
+   <input type="text" name="sellerName" placeholder="Seller Name..." class="form-control" #sellerName="ngModel" ngModel
+    required>
+   <div *ngIf="sellerName.errors?.required" class="warning-text">*Enter Seller Name</div>
+   <br>
+
+
+   <label for="houseNo" class="text-uppercase">House Number:</label>
+   <input type="text" name="houseNo" placeholder="house Number..." class="form-control" #houseNo="ngModel" ngModel
+    required>
+   <div *ngIf="houseNo.errors?.required" class="warning-text">*Enter House Number</div>
+   <br>
+
+   <label for="street" class="text-uppercase">Street:</label>
+   <input type="text" name="street" placeholder="Street..." class="form-control" #street="ngModel" ngModel required>
+   <div *ngIf="street.errors?.required" class="warning-text">*Enter Email Id</div>
+   <br>
+
+   <label for="city" class="text-uppercase">City:</label>
+   <input type="text" name="city" placeholder="City..." class="form-control" #city="ngModel" ngModel required>
+   <div *ngIf="city.errors?.required" class="warning-text">*Enter City</div>
+   <br>
+
+   <label for="pincode" class="text-uppercase">Pincode:</label>
+   <input type="number" name="pincode" placeholder="Email Id..." class="form-control" #pincode="ngModel" ngModel
+    required>
+   <div *ngIf="pincode.errors?.required" class="warning-text">*Enter Pincode</div>
+   <br>
+
+   <label for="state" class="text-uppercase">State:</label>
+   <input type="text" name="state" placeholder="State..." class="form-control" #state="ngModel" ngModel required>
+   <div *ngIf="state.errors?.required" class="warning-text">*Enter State</div>
+   <br>
+
+   <label for="country" class="text-uppercase">Email Id:</label>
+   <input type="text" name="country" placeholder="Country..." class="form-control" #country="ngModel" ngModel required>
+   <div *ngIf="country.errors?.required" class="warning-text">*Enter Country</div>
+   <br>
+
+
+   <label for="phoneNumber" class="text-uppercase">Phone Number:</label>
+   <input type="number" name="phoneNumber" placeholder="Phone Number..." class="form-control" #phoneNumber="ngModel"
+    ngModel required>
+   <div *ngIf="phoneNumber.errors?.required" class="warning-text">*Enter Phone Number</div>
+   <br>
+
+
+   <label for="emailId" class="text-uppercase">Email Id:</label>
+   <input type="text" name="emailId" placeholder="Email Id..." class="form-control" #emailId="ngModel" ngModel required>
+   <div *ngIf="emailId.errors?.required" class="warning-text">*Enter Email Id</div>
+   <br>
+
+   <label for="loginId" class="text-uppercase">Login Id:</label>
+   <input type="text" name="loginId" placeholder="loginId..." class="form-control" #loginId="ngModel" minlength="4"
+    ngModel required>
+   <div *ngIf="loginId.errors?.required" class="warning-text">*Enter Login ID</div>
+   <div *ngIf="loginId.errors?.minlength" class="warning-text">*Login Id has min 4 chars</div>
+   <br>
+
+   <label for="password" class="text-uppercase">Password:</label>
+   <input type="password" name="password" placeholder="password..." class="form-control" #password="ngModel" ngModel
+    required minlength="8">
+   <div *ngIf="password.errors?.required" class="warning-text">*Enter Password</div>
+   <div *ngIf="password.errors?.minlength" class="warning-text">*Password has min 6 chars</div>
+   <br>
+
+   <button class="btn btn-outline-success" [disabled]="!registerForm.valid">Register</button>
+  </form>
+ </div>
+</section>

@@ -1,0 +1,21 @@
+.navbar{
+ height: 60px;
+ padding-bottom: 0;
+ margin-bottom: 0;
+}
+
+.navbar a {
+ color: white;
+ margin: 0 2px;
+}
+
+.navbar .active{
+ background-color: #253b49;
+ border-radius: 4px;
+}
+
+hr .style-hr{
+ border: 0;
+ border-bottom: 1px dashed #ccc;
+ background: #999;
+}
