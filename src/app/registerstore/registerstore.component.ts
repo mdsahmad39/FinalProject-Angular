@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../customer.service';
+import { StoreService } from '../store.service';
 
 @Component({
   selector: 'app-registerstore',
@@ -8,14 +9,14 @@ import { CustomerService } from '../customer.service';
 })
 export class RegisterstoreComponent implements OnInit {
 
-  constructor(public customerService: CustomerService) { }
+  constructor(public storeService: StoreService) { }
 
   ngOnInit(): void {
   }
 
   submitRegisterForm(registerForm: any): void {
     console.log(registerForm);
-    this.customerService.register(registerForm).subscribe((result: any) => console.log(result));
+    this.storeService.register(registerForm).subscribe((result: any) => console.log(result));
   }
 
 }

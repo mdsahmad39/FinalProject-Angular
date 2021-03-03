@@ -9,15 +9,21 @@ import { LoginComponent } from './login/login.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { RegisterstoreComponent } from './registerstore/registerstore.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { CustDashboardComponent } from './cust-dashboard/cust-dashboard.component';
+import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
+import { CustLoginComponent } from './cust-login/cust-login.component';
+import { SellerLoginComponent } from './seller-login/seller-login.component';
 
 const appRoute: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'login_customer', component: CustLoginComponent },
+  { path: 'login_seller', component: SellerLoginComponent },
   { path: 'register_customer', component: RegistercustomerComponent },
   { path: 'register_store', component: RegisterstoreComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard_store', component: CustDashboardComponent },
+  { path: 'dashboard_seller', component: SellerDashboardComponent }
 ];
 
 @NgModule({
@@ -26,9 +32,12 @@ const appRoute: Routes = [
     LoginComponent,
     RegistercustomerComponent,
     RegisterstoreComponent,
-    DashboardComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CustDashboardComponent,
+    SellerDashboardComponent,
+    CustLoginComponent,
+    SellerLoginComponent
   ],
   imports: [
     BrowserModule,
