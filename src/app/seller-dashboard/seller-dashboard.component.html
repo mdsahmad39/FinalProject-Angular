@@ -1,19 +1,22 @@
-<div class="container row offset-1" style="margin-top: 4px">
- <div class="col-md-3" *ngFor="let product of productsList" style="margin-top:15px;">
-  <div class="card" style="width: 18rem; margin:100px; height:24rem;">
-   <div class="cart-body" style="margin-top:15px;">
-    <img class="card-img-top" alt="Card Image" />
-    <p><strong>{{product.productName}}</strong></p>
-    <p class="card-text"> <strong>Weight: </strong> {{product.weight}}</p>
-   </div>
-   <div class="row">
-    <div class="col">
-     <div>{{product.price | currency:'INR'}}</div>
+<section class="container">
+ <h3 style="text-align: center;"><strong>My Products</strong></h3>
+ <div class="container row offset-1" style="margin-top: 4px">
+  <div class="col-md-3" *ngFor="let product of productsList" style="margin-top:15px;">
+   <div class="card" style="width: 18rem; margin:100px; height:24rem;">
+    <div class="cart-body" style="margin-top:15px;">
+     <img class="card-img-top" alt="Card Image" />
+     <p><strong>{{product.productName}}</strong></p>
+     <p class="card-text"> <strong>Weight: </strong> {{product.weight}}</p>
     </div>
-    <div class="col">
-     <div><button class="btn btn-primary">Add To Cart</button></div>
+    <div class="row">
+     <div class="col">
+      <div>{{product.price | currency:'INR'}}</div>
+     </div>
+     <div class="col">
+      <div><button class="btn btn-primary">Add To Cart</button></div>
+     </div>
     </div>
    </div>
   </div>
  </div>
-</div>
+</section>
