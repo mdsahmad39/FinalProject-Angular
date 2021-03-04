@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../customer.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-registercustomer',
@@ -7,10 +8,11 @@ import { CustomerService } from '../customer.service';
   styleUrls: ['./registercustomer.component.css']
 })
 export class RegistercustomerComponent implements OnInit {
-
-  constructor(public customerService: CustomerService) { }
+  countriesList: any;
+  constructor(public customerService: CustomerService, public userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getAllCountries().subscribe((data: any) => this.countriesList = data);
   }
 
   submitRegisterForm(registerForm: any): void {

@@ -43,8 +43,9 @@
    <div *ngIf="state.errors?.required" class="warning-text">*Enter State</div>
    <br>
 
-   <label for="country" class="text-uppercase">Country:</label>
-   <input type="text" name="country" placeholder="Country..." class="form-control" #country="ngModel" ngModel required>
+   <select name="country" id="country" class="form-select" #country="ngModel" ngModel required>
+    <option value="{{country.name}}" *ngFor="let country of countriesList">{{country.name}}</option>
+   </select>
    <div *ngIf="country.errors?.required" class="warning-text">*Enter Country</div>
    <br>
 

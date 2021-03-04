@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 export class CustomerService {
 
   public isCustomerLogged: boolean;
+  customerId: any;
+  customerProfile: any;
 
   constructor(public httpClient: HttpClient) {
     this.isCustomerLogged = false;
@@ -24,6 +26,22 @@ export class CustomerService {
     return this.isCustomerLogged;
   }
 
+  setCustomerId(id: any): void {
+    this.customerId = id;
+  }
+
+  getCustomerId(): any {
+    return this.customerId;
+  }
+
+  setCustomerProfile(profile: any): void {
+    this.customerProfile = profile;
+  }
+
+  getCustomerProfile(): any {
+    return this.customerProfile;
+  }
+
   loginCustomer(loginForm: any) {
     return this.httpClient.get('login_customer/' + loginForm.loginId + '/' + loginForm.password);
   }
@@ -31,4 +49,5 @@ export class CustomerService {
   register(registerForm: any) {
     return this.httpClient.post('register_customer', registerForm);
   }
+
 }

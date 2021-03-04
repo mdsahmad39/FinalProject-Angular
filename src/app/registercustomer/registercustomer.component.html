@@ -53,7 +53,10 @@
    <br>
 
    <label for="country" class="text-uppercase">Country:</label>
-   <input type="text" name="country" placeholder="Country..." class="form-control" #country="ngModel" ngModel required>
+
+   <select name="country" id="country" class="form-select" #country="ngModel" ngModel required>
+    <option value="{{country.name}}" *ngFor="let country of countriesList">{{country.name}}</option>
+   </select>
    <div *ngIf="country.errors?.required" class="warning-text">*Enter Country</div>
    <br>
 
@@ -64,8 +67,9 @@
 
    <label for="phoneNumber" class="text-uppercase">Phone Number:</label>
    <input type="number" name="phoneNumber" placeholder="Phone Number..." class="form-control" #phoneNumber="ngModel"
-    ngModel required>
+    minlength="10" ngModel required>
    <div *ngIf="phoneNumber.errors?.required" class="warning-text">*Enter Phone Number</div>
+   <div *ngIf="phoneNumber.errors?.minlength" class="warning-text">*Phone Number has exactly 10 digits</div>
    <br>
 
 
