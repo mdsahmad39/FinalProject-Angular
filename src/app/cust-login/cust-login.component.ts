@@ -17,7 +17,7 @@ export class CustLoginComponent implements OnInit {
 
   async submitLoginForm(loginForm: any) {
     if (loginForm.loginId === 'admin' && loginForm.password === 'admin') {
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['adminDashboard']);
     } else {
       await this.customerService.loginCustomer(loginForm).toPromise().then((data: any) => { this.customer = data; });
       if (this.customer) {

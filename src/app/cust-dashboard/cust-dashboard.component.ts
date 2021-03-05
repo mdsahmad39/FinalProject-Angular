@@ -11,14 +11,16 @@ import { StoreService } from '../store.service';
 export class CustDashboardComponent implements OnInit {
 
   storesList: any;
+  imagePath:any;
   constructor(public customerService: CustomerService, public storeService: StoreService, public router: Router) { }
 
   ngOnInit(): void {
     this.storesList = this.customerService.getAllStores().subscribe((data: any) => { this.storesList = data, console.log(data); });
+    this.imagePath = '../../assets/images/store_image.png';
   }
 
   goToStore(store: any): void {
-    this.storeService.setSellerProfile = store;
+    this.storeService.setSellerProfile(store);
     console.log(store);
     this.router.navigate(['storeDisplay']);
   }

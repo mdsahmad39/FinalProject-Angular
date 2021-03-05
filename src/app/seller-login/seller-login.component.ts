@@ -17,7 +17,7 @@ export class SellerLoginComponent implements OnInit {
 
   async submitLoginForm(loginForm: any) {
     if (loginForm.loginId === 'admin' && loginForm.password === 'admin') {
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['adminDashboard']);
     } else {
       await this.storeService.loginSeller(loginForm).toPromise().then((data: any) => { this.seller = data; });
       if (this.seller) {

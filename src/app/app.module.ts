@@ -18,9 +18,11 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { StoreProfileComponent } from './store-profile/store-profile.component';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { StoreDisplayComponent } from './store-display/store-display.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const appRoute: Routes = [
   { path: '', component: HomepageComponent },
+  {path: 'adminDashboard',  component: AdminDashboardComponent},
   { path: 'login_customer', component: CustLoginComponent },
   { path: 'login_seller', component: SellerLoginComponent },
   { path: 'register_customer', component: RegistercustomerComponent },
@@ -46,7 +48,8 @@ const appRoute: Routes = [
     SellerLoginComponent,
     StoreProfileComponent,
     CustomerProfileComponent,
-    StoreDisplayComponent
+    StoreDisplayComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

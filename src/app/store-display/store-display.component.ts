@@ -10,13 +10,16 @@ import { StoreService } from '../store.service';
 export class StoreDisplayComponent implements OnInit {
 
   store: any;
-  productList: any;
+  productsList: any;
+  imagePath:any;
   constructor(public customerService: CustomerService, public storeService: StoreService) { }
 
   ngOnInit(): void {
     this.store = this.storeService.getSellerProfile();
-    console.log(this.storeService.getSellerProfile());
-    console.log(this.store);
+    this.storeService.getAllproducts(this.store.storeId).subscribe((data: any) => {
+      this.productsList = data, console.log(data);
+    });
+    this.imagePath = '../../assets/images/eggs.jpg';
   }
 
 }

@@ -1,0 +1,19 @@
+<h3 style="text-align:center;">WELCOME TO ADMIN PAGE</h3>
+<table class="table">
+<thead>
+<th>iD</th>
+<th>storename</th>
+<th>Totalavaliableproducts</th>
+<th>orderrecevived</th>
+<th>storeworkingstatus</th>
+</thead>
+<tbody>
+<tr *ngFor='let store of stores'>
+  <td>{{store.storeid}}</td>
+  <td>{{store.storename}}</td>
+  <td>{{store.Totalavaliableproducts}}</td>
+  <td>{{store.orderrecevived}}</td>
+    <td>{{store.storeworkingstatus}}</td>
+</tr>
+</tbody>
+</table>
