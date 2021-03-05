@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../seller.service';
 
-var jQuery: any;
+declare var jQuery: any;
 
 @Component({
   selector: 'app-dashboard',
