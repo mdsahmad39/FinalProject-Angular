@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -5,51 +6,53 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
-import { RegisterstoreComponent } from './registerstore/registerstore.component';
-import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { CustDashboardComponent } from './cust-dashboard/cust-dashboard.component';
-import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
-import { CustLoginComponent } from './cust-login/cust-login.component';
-import { SellerLoginComponent } from './seller-login/seller-login.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { StoreProfileComponent } from './store-profile/store-profile.component';
-import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
-import { StoreDisplayComponent } from './store-display/store-display.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { HomepageComponent } from './common/homepage/homepage.component';
+import { DashboardComponent } from './customer/dashboard/dashboard.component';
+import { LoginComponent } from './customer/login/login.component';
+import { ProfileComponent } from './customer/profile/profile.component';
+import { RegisterComponent } from './customer/register/register.component';
+import { StoreDisplayComponent } from './customer/store-display/store-display.component';
+import { SellerDashboardComponent } from './seller/dashboard/dashboard.component';
+import { SellerLoginComponent } from './seller/login/login.component';
+import { SellerProfileComponent } from './seller/profile/profile.component';
+import { SellerRegisterComponent } from './seller/register/register.component';
+import { AdminDashboardComponent } from './admin/dashboard/dashboard.component';
+import { CustomerAuthGuard } from './customer/auth.guard';
+import { SellerAuthGuard } from './seller/auth.guard';
+import { FooterComponent } from './common/footer/footer.component';
+import { HeaderComponent } from './common/header/header.component';
+
 
 const appRoute: Routes = [
   { path: '', component: HomepageComponent },
-  {path: 'adminDashboard',  component: AdminDashboardComponent},
-  { path: 'login_customer', component: CustLoginComponent },
+  { path: 'login_customer', component: LoginComponent },
   { path: 'login_seller', component: SellerLoginComponent },
-  { path: 'register_customer', component: RegistercustomerComponent },
-  { path: 'register_seller', component: RegisterstoreComponent },
-  { path: 'dashboard_customer', component: CustDashboardComponent },
-  { path: 'dashboard_seller', component: SellerDashboardComponent },
-  { path: 'profile_seller', component: StoreProfileComponent },
-  { path: 'profile_customer', component: CustomerProfileComponent },
-  { path: 'storeDisplay', component: StoreDisplayComponent }
+  { path: 'register_customer', component: RegisterComponent },
+  { path: 'register_seller', component: SellerRegisterComponent },
+  { path: 'adminDashboard', component: AdminDashboardComponent },
+  { path: 'dashboard_customer', canActivate: [CustomerAuthGuard], component: DashboardComponent },
+  { path: 'dashboard_seller', canActivate: [SellerAuthGuard], component: SellerDashboardComponent },
+  { path: 'profile_seller', canActivate: [SellerAuthGuard], component: SellerProfileComponent },
+  { path: 'profile_customer', canActivate: [CustomerAuthGuard], component: ProfileComponent },
+  { path: 'storeDisplay', canActivate: [CustomerAuthGuard], component: StoreDisplayComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistercustomerComponent,
-    RegisterstoreComponent,
-    HeaderComponent,
     HomepageComponent,
-    FooterComponent,
-    CustDashboardComponent,
-    SellerDashboardComponent,
-    CustLoginComponent,
-    SellerLoginComponent,
-    StoreProfileComponent,
-    CustomerProfileComponent,
+    DashboardComponent,
+    LoginComponent,
+    ProfileComponent,
+    RegisterComponent,
     StoreDisplayComponent,
-    AdminDashboardComponent
+    SellerDashboardComponent,
+    SellerLoginComponent,
+    SellerProfileComponent,
+    SellerRegisterComponent,
+    AdminDashboardComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

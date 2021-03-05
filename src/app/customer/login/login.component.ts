@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
 
 @Component({
-  selector: 'app-cust-login',
-  templateUrl: './cust-login.component.html',
-  styleUrls: ['./cust-login.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class CustLoginComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   customer: any;
   constructor(public customerService: CustomerService, public router: Router) { }

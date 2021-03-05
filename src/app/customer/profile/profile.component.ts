@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../customer.service';
 
 @Component({
-  selector: 'app-customer-profile',
-  templateUrl: './customer-profile.component.html',
-  styleUrls: ['./customer-profile.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class CustomerProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
   customer: any;
   constructor(public customerService: CustomerService) { }

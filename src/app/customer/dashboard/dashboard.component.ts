@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SellerService } from 'src/app/seller/seller.service';
 import { CustomerService } from '../customer.service';
-import { StoreService } from '../store.service';
 
 @Component({
-  selector: 'app-cust-dashboard',
-  templateUrl: './cust-dashboard.component.html',
-  styleUrls: ['./cust-dashboard.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class CustDashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   storesList: any;
-  imagePath:any;
-  constructor(public customerService: CustomerService, public storeService: StoreService, public router: Router) { }
+  imagePath: any;
+  constructor(public customerService: CustomerService, public storeService: SellerService, public router: Router) { }
 
   ngOnInit(): void {
     this.storesList = this.customerService.getAllStores().subscribe((data: any) => { this.storesList = data, console.log(data); });

@@ -53,5 +53,4 @@ export class CustomerService {
   getAllStores(): any {
     return this.httpClient.get('getAllStores');
   }
-
 }
