@@ -50,4 +50,8 @@ export class CustomerService {
     return this.httpClient.post('register_customer', registerForm);
   }
 
+  getAllStores(): any {
+    return this.httpClient.get('getAllStores');
+  }
+
 }

@@ -54,4 +54,8 @@ export class StoreService {
   getAllproducts(storeId: any) {
     return this.httpClient.get('get_products_by_store/' + storeId);
   }
+
+  updateProduct(product: any): any {
+    return this.httpClient.post('updateProduct/', product);
+  }
 }

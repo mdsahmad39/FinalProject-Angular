@@ -1,1 +1,16 @@
-<p>cust-dashboard works!</p>
+<div class="row offset-md-1">
+ <h3 style="text-align: center;"><strong>Available stores where you can buy from...</strong></h3>
+ <div class="col-md-3" *ngFor="let store of storesList" style="margin-top: 20px;">
+  <div class="card" style="width: 16rem;height: 20rem;">
+   <img class="card-img-top" [src]="" alt="Card Image" />
+   <div class="cart-body">
+    <p class="card-text"><strong>Store Name: </strong>{{store.storeName}}</p>
+    <p class="card-text"><strong>Store Contact: </strong>{{store.phone}}</p>
+   </div>
+   <div class="row">
+    <div class="col">
+     <div><button class="btn btn-primary" (click)="goToStore(store)">Go To store</button></div>
+    </div>
+   </div>
+  </div>
+ </div>

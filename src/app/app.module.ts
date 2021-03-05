@@ -15,6 +15,9 @@ import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.co
 import { CustLoginComponent } from './cust-login/cust-login.component';
 import { SellerLoginComponent } from './seller-login/seller-login.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { StoreProfileComponent } from './store-profile/store-profile.component';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
+import { StoreDisplayComponent } from './store-display/store-display.component';
 
 const appRoute: Routes = [
   { path: '', component: HomepageComponent },
@@ -23,7 +26,10 @@ const appRoute: Routes = [
   { path: 'register_customer', component: RegistercustomerComponent },
   { path: 'register_seller', component: RegisterstoreComponent },
   { path: 'dashboard_customer', component: CustDashboardComponent },
-  { path: 'dashboard_seller', component: SellerDashboardComponent }
+  { path: 'dashboard_seller', component: SellerDashboardComponent },
+  { path: 'profile_seller', component: StoreProfileComponent },
+  { path: 'profile_customer', component: CustomerProfileComponent },
+  { path: 'storeDisplay', component: StoreDisplayComponent }
 ];
 
 @NgModule({
@@ -37,7 +43,10 @@ const appRoute: Routes = [
     CustDashboardComponent,
     SellerDashboardComponent,
     CustLoginComponent,
-    SellerLoginComponent
+    SellerLoginComponent,
+    StoreProfileComponent,
+    CustomerProfileComponent,
+    StoreDisplayComponent
   ],
   imports: [
     BrowserModule,
