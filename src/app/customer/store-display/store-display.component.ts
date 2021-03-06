@@ -15,7 +15,7 @@ export class StoreDisplayComponent implements OnInit {
   constructor(public customerService: CustomerService, public sellerService: SellerService) { }
 
   ngOnInit(): void {
-    this.store = this.sellerService.getSellerProfile();
+    this.store = this.customerService.getSellerProfile();
     this.sellerService.getAllproducts(this.store.storeId).subscribe((data: any) => {
       this.productsList = data, console.log(data);
     });

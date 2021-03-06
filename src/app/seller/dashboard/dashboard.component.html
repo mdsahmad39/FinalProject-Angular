@@ -1,114 +1,207 @@
 <section class="container">
 
- <!-- Modal -->
- <div id="productModel" class="modal fade">
-  <div class="modal-dialog">
 
-   <div class="modal-content">
+  <div id="deleteProductModel" class="modal fade">
+    <div class="modal-dialog">
 
-    <div class="modal-header">
-     <button class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
-    </div>
+      <div class="modal-content">
 
-    <div class="modal-body">
-     <form #registerForm="ngForm" novalidate>
+        <div class="modal-header">
+          <button class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+        </div>
 
-      <label for="productId" class="text-uppercase">Product Id:</label>
-      <input class="form-control" type="number" name="productId" [(ngModel)]="editProduct.productId" ngModel readonly>
-      <br>
+        <div class="modal-body">
+          <p>Are you sure you want to delete the Product {{deleteProduct.productName}}</p>
+        </div>
 
-      <label for="productName" class="text-uppercase">Product Name:</label>
-      <input class="form-control" type="text" name="productName" [(ngModel)]="editProduct.productName" ngModel readonly>
-      <br>
-
-      <label for="category" class="text-uppercase">Category:</label>
-      <input class="form-control" type="text" name="category" [(ngModel)]="editProduct.category" ngModel readonly>
-      <br>
-
-      <label for="weight" class="text-uppercase">Weight:</label>
-      <input class="form-control" type="number" name="weight" [(ngModel)]="editProduct.weight" ngModel required>
-      <br>
-
-      <label for="availableQuantity" class="text-uppercase">Available Quantity:</label>
-      <input class="form-control" type="number" name="availableQuantity" [(ngModel)]="editProduct.availableQuantity"
-       ngModel required>
-      <br>
-
-      <label for="price" class="text-uppercase">Price:</label>
-      <input class="form-control" type="number" name="price" [(ngModel)]="editProduct.price" ngModel required>
-      <br>
-
-      <label for="createdDate" class="text-uppercase">Price:</label>
-      <input class="form-control" type="text" name="createdDate" [(ngModel)]="editProduct.createdDate" ngModel required>
-      <br>
-
-      <label for="expiryDate" class="text-uppercase">Price:</label>
-      <input class="form-control" type="text" name="expiryDate" [(ngModel)]="editProduct.expiryDate" ngModel required>
-      <br>
-
-      <label for="store" class="text-uppercase">Store Name:</label>
-      <input class="form-control" type="text" name="store" [(ngModel)]="editProduct.store.storeName" ngModel readonly>
-      <br>
-
-      <label for="orderDetails" class="text-uppercase">Order Details:</label>
-      <input class="form-control" type="text" name="orderDetails" [(ngModel)]="editProduct.orderDetails" ngModel
-       readonly>
-      <br>
-
-     </form>
-    </div>
-
-    <div class="modal-footer">
-     <button (click)="updateProduct()" class="btn btn-default" data-dismiss="modal">Edit Product</button>
-    </div>
-   </div>
-
-  </div>
- </div>
-
-
-
- <h3 style="text-align: center;"><strong>My Products</strong></h3>
- <div class="input-group" style="margin-top: 50px;">
-  <div class="form-outline offset-lg-5">
-   <input id="search-input" placeholder="Search for products..." type="search" id="form1" class="form-control" />
-  </div>
-  <button id="search-button" type="button" class="btn btn-primary">
-   <i class="fas fa-search"></i>
-  </button>
- </div>
- <div class="container row offset-1" style="margin-top: 4px">
-  <div class="col-md-3" *ngFor="let product of productsList" style="margin-top:15px;">
-   <div class="card" style="width: 18rem; margin:10px 100px 100px 100px; height:30rem;">
-    <div class="cart-body" style="margin:5px;">
-     <img class="card-img-top" [src]="imagePathList" alt="Card Image" />
-     <p><strong>{{product.productName}}</strong></p>
-     <p class="card-text"> <strong>Category: </strong> {{product.category}}</p>
-     <p class="card-text"> <strong>Available Quantity: </strong> {{product.availableQuantity}}</p>
-    </div>
-    <div class="row">
-     <div class="col">
-      <div>
-       <p class="card-text"><strong> Price: </strong>{{product.price | currency:'INR'}}</p>
+        <div class="modal-footer">
+          <button (click)="delete(deleteProduct)" class="btn btn-default" data-dismiss="modal">Delete</button>
+        </div>
       </div>
-     </div>
-     <br>
 
     </div>
-    <div class="row">
-     <div class="col">
-      <p class="card-text"><strong>Created Date: </strong></p>
-      <p class="card-text">{{product.createdDate}}</p>
-     </div>
-     <div class="col" style="float: right;">
-      <p class="card-text"><strong>Expiry Date: </strong></p>
-      <p class="card-text">{{product.expiryDate}}</p>
-     </div>
-    </div>
-    <div class="row">
-     <div><button class="btn btn-primary" (click)=showEditPopup(product) style="float: right;">Update</button></div>
-    </div>
-   </div>
   </div>
- </div>
+
+  <div id="addProductModel" class="modal fade">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+        </div>
+
+        <div class="modal-body">
+          <form #registerForm="ngForm" novalidate>
+            <input class="form-control" type="text" name="productName" placeholder="Product Name..."
+              [(ngModel)]="addProduct.productName" ngModel required>
+            <br>
+            <input class="form-control" type="text" name="category" placeholder="Category..."
+              [(ngModel)]="addProduct.category" ngModel required>
+            <br>
+            <input class="form-control" type="text" name="brand" placeholder="Brand..." [(ngModel)]="addProduct.brand"
+              ngModel required>
+            <br>
+            <input class="form-control" type="text" name="description" placeholder="Description..."
+              [(ngModel)]="addProduct.description" ngModel required>
+            <br>
+            <input class="form-control" type="number" name="weight" placeholder="Weight..."
+              [(ngModel)]="addProduct.weight" ngModel required>
+            <br>
+            <input class="form-control" type="number" name="availableQuantity" placeholder="Available Quantity..."
+              [(ngModel)]="addProduct.availableQuantity" ngModel required>
+            <br>
+            <input class="form-control" type="number" name="price" placeholder="Price..." [(ngModel)]="addProduct.price"
+              ngModel required>
+            <br>
+            <input class="form-control" type="date" name="createdDate" placeholder="Created date..."
+              [(ngModel)]="addProduct.createdDate" ngModel required>
+            <br>
+            <input class="form-control" type="date" name="expiryDate" placeholder="Expiry date..."
+              [(ngModel)]="addProduct.expiryDate" ngModel required>
+            <br>
+
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button (click)="sendAddProductQuery()" class="btn btn-default" data-dismiss="modal">Add Product</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="productModel" class="modal fade">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+        </div>
+
+        <div class="modal-body">
+          <form #registerForm="ngForm" novalidate>
+
+            <label for="productId" class="text-uppercase">Product Id:</label>
+            <input class="form-control" type="number" name="productId" [(ngModel)]="editProduct.productId" ngModel
+              readonly>
+            <br>
+
+            <label for="productName" class="text-uppercase">Product Name:</label>
+            <input class="form-control" type="text" name="productName" [(ngModel)]="editProduct.productName" ngModel
+              readonly>
+            <br>
+
+            <label for="category" class="text-uppercase">Category:</label>
+            <input class="form-control" type="text" name="category" [(ngModel)]="editProduct.category" ngModel required>
+            <br>
+
+            <label for="brand" class="text-uppercase">Brand:</label>
+            <input class="form-control" type="text" name="brand" [(ngModel)]="editProduct.brand" ngModel required>
+            <br>
+
+            <label for="description" class="text-uppercase">Description:</label>
+            <input class="form-control" type="text" name="description" [(ngModel)]="editProduct.description" ngModel
+              required>
+            <br>
+
+            <label for="weight" class="text-uppercase">Weight:</label>
+            <input class="form-control" type="number" name="weight" [(ngModel)]="editProduct.weight" ngModel required>
+            <br>
+
+            <label for="availableQuantity" class="text-uppercase">Available Quantity:</label>
+            <input class="form-control" type="number" name="availableQuantity"
+              [(ngModel)]="editProduct.availableQuantity" ngModel required>
+            <br>
+
+            <label for="price" class="text-uppercase">Price:</label>
+            <input class="form-control" type="number" name="price" [(ngModel)]="editProduct.price" ngModel required>
+            <br>
+
+            <label for="createdDate" class="text-uppercase">Price:</label>
+            <input class="form-control" type="text" name="createdDate" [(ngModel)]="editProduct.createdDate" ngModel
+              required>
+            <br>
+
+            <label for="expiryDate" class="text-uppercase">Price:</label>
+            <input class="form-control" type="text" name="expiryDate" [(ngModel)]="editProduct.expiryDate" ngModel
+              required>
+            <br>
+
+            <label for="store" class="text-uppercase">Store Name:</label>
+            <input class="form-control" type="text" name="store" [(ngModel)]="editProduct.store.storeName" ngModel
+              readonly>
+            <br>
+
+            <label for="orderDetails" class="text-uppercase">Order Details:</label>
+            <input class="form-control" type="text" name="orderDetails" [(ngModel)]="editProduct.orderDetails" ngModel
+              readonly>
+            <br>
+
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button (click)="updateProduct()" class="btn btn-default" data-dismiss="modal">Update Product</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <h3 style="text-align: center;"><strong>My Products</strong></h3>
+  <button (click)="addProductToDB()" class="btn btn-primary offset-lg-6">Add Product</button>
+  <div class="input-group" style="margin-top: 50px;">
+    <div class="form-outline offset-lg-5">
+      <input id="search-input" placeholder="Search for products..." type="search" id="form1" class="form-control"
+        [(ngModel)]="productName" />
+    </div>
+    <button (click)="getProductByName()" id="search-button" type="button" class="btn btn-primary">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+  <div class="container row" style="margin-top: 4px">
+    <div class="col-md-4" *ngFor="let product of productsList" style="margin-top:15px;">
+      <div class="card" style="width: 22rem; margin:10px; height:38rem;">
+        <div class="cart-body" style="margin:5px;">
+          <img class="card-img-top" [src]="imagePathList" alt="Card Image" />
+          <p><strong>{{product.productName}}</strong></p>
+          <p class="card-text"> <strong>Brand: </strong> {{product.brand}}</p>
+          <p class="card-text"> <strong>Category: </strong> {{product.category}}</p>
+          <p class="card-text"> <strong>Description: </strong> {{product.description}}</p>
+          <p class="card-text"> <strong>Available Quantity: </strong> {{product.availableQuantity}}</p>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div>
+              <p class="card-text"><strong> Price: </strong>{{product.price | currency:'INR'}}</p>
+            </div>
+          </div>
+          <br>
+
+        </div>
+        <div class="row">
+          <div class="col">
+            <p class="card-text"><strong>Created Date: </strong></p>
+            <p class="card-text">{{product.createdDate}}</p>
+          </div>
+          <div class="col" style="float: right;">
+            <p class="card-text"><strong>Expiry Date: </strong></p>
+            <p class="card-text">{{product.expiryDate}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div><button class="btn btn-danger" (click)=deleteProductConfirmation(product)
+              style="float: right;">Delete</button>
+            <button class="btn btn-primary" (click)=showEditPopup(product)
+              style="float: right; margin-right: 5px;">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

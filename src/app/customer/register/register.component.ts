@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/common/common.service';
 import { CustomerService } from '../customer.service';
 
@@ -10,7 +11,7 @@ import { CustomerService } from '../customer.service';
 export class RegisterComponent implements OnInit {
 
   countriesList: any;
-  constructor(public customerService: CustomerService, public commonService: CommonService) { }
+  constructor(public customerService: CustomerService, public commonService: CommonService, public router: Router) { }
 
   ngOnInit(): void {
     this.commonService.getAllCountries().subscribe((data: any) => this.countriesList = data);
@@ -19,6 +20,7 @@ export class RegisterComponent implements OnInit {
   submitRegisterForm(registerForm: any): void {
     console.log(registerForm);
     this.customerService.register(registerForm).subscribe((result: any) => console.log(result));
+    this.router.navigate(['']);
   }
 
 }

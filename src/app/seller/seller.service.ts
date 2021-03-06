@@ -1,50 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SellerService {
 
-  isSellerLoggedIn: boolean;
+  private sellerLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   sellerId: any;
-  sellerProfile: any;
+  seller: any;
 
-  constructor(public httpClient: HttpClient) {
-    this.isSellerLoggedIn = false;
+  constructor(public httpClient: HttpClient, public router: Router) {
     this.sellerId = 0;
   }
 
-  setSellerLoggedIn(): void {
-    this.isSellerLoggedIn = true;
+  get isSellerLoggedIn() {
+    return this.sellerLoggedIn.asObservable();
   }
 
-  setSellerLoggedOut(): void {
-    this.isSellerLoggedIn = false;
+  async loginSeller(loginForm: any) {
+    await this.httpClient.get('login_seller/' + loginForm.loginId + '/' + loginForm.password).toPromise().then((data: any) => { this.seller = data; });
+    if (this.seller) {
+      this.sellerLoggedIn.next(true);
+
+      console.log(this.seller.storeId);
+      this.router.navigate(['dashboardSeller']);
+    }
   }
 
-  getSellerLoggedStatus(): any {
-    return this.isSellerLoggedIn;
-  }
-
-  setSellerId(id: any): void {
-    this.sellerId = id;
-  }
 
   getSellerId(): any {
-    return this.sellerId;
-  }
-
-  setSellerProfile(profile: any): void {
-    this.sellerProfile = profile;
+    return this.seller.storeId;
   }
 
   getSellerProfile(): any {
-    return this.sellerProfile;
-  }
-
-  loginSeller(loginForm: any) {
-    return this.httpClient.get('login_seller/' + loginForm.loginId + '/' + loginForm.password);
+    return this.seller;
   }
 
   register(registerForm: any) {
@@ -57,5 +49,13 @@ export class SellerService {
 
   updateProduct(product: any): any {
     return this.httpClient.post('updateProduct/', product);
+  }
+
+  addProduct(product: any): any {
+    return this.httpClient.post('addProduct/', product);
+  }
+
+  deleteProduct(product: any): any {
+    return this.httpClient.post('deleteProduct/', product);
   }
 }

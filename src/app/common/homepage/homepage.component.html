@@ -8,8 +8,8 @@
      <h5 class="card-title">Seller Portal</h5>
      <p class="card-text">This is the seller portal where seller can register and login. After login they can add the
       products available in their store.</p>
-     <a class="btn btn-primary" routerLink="login_seller">Login</a>
-     <a class="btn btn-primary" routerLink="register_seller" style="float: right;">Register</a>
+     <a class="btn btn-primary" routerLink="loginSeller">Login</a>
+     <a class="btn btn-primary" routerLink="registerSeller" style="float: right;">Register</a>
     </div>
    </div>
   </div>
@@ -19,8 +19,11 @@
      <h5 class="card-title">Customer Portal</h5>
      <p class="card-text">This is the customer portal where customer can register and login. After login, customer can
       login and buy products from nearby stores.</p>
-     <a class="btn btn-primary" routerLink="login_customer">Login</a>
-     <a class="btn btn-primary" routerLink="register_customer" style="float: right;">Register</a>
+     <a class="btn btn-primary" routerLink="loginCustomer">Login</a>
+     <a class="btn btn-primary" routerLink="registerCustomer" style="float: right;">Register</a>
+     <button (click)="showToaster()">
+      Show Toaster
+     </button>
     </div>
    </div>
   </div>

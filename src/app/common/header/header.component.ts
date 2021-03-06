@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { CustomerService } from 'src/app/customer/customer.service';
 import { SellerService } from 'src/app/seller/seller.service';
 
@@ -9,17 +10,15 @@ import { SellerService } from 'src/app/seller/seller.service';
 })
 export class HeaderComponent implements OnInit {
 
-  customerStatus: boolean;
-  sellerStatus: boolean;
+  isSellerLoggedIn$: Observable<boolean>;
+  isCustomerLoggedIn$: Observable<boolean>;
 
-  constructor(public customerService: CustomerService, public sellerService: SellerService) {
-    this.customerStatus = true;
-    this.sellerStatus = false;
+  constructor(public sellerService: SellerService, public customerService: CustomerService) {
+    this.isSellerLoggedIn$ = this.sellerService.isSellerLoggedIn;
+    this.isCustomerLoggedIn$ = this.customerService.isCustomerLoggedIn;
   }
 
   ngOnInit(): void {
-    this.customerStatus = this.customerService.getCustomerLoggedStatus();
-    this.sellerStatus = this.sellerService.getSellerLoggedStatus();
   }
 
 }

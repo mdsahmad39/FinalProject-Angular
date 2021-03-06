@@ -15,13 +15,12 @@ export class DashboardComponent implements OnInit {
   constructor(public customerService: CustomerService, public storeService: SellerService, public router: Router) { }
 
   ngOnInit(): void {
-    this.storesList = this.customerService.getAllStores().subscribe((data: any) => { this.storesList = data, console.log(data); });
+    this.storesList = this.customerService.getAllStores().subscribe((data: any) => { this.storesList = data });
     this.imagePath = '../../assets/images/store_image.png';
   }
 
   goToStore(store: any): void {
-    this.storeService.setSellerProfile(store);
-    console.log(store);
+    this.customerService.setSellerProfile(store);
     this.router.navigate(['storeDisplay']);
   }
 

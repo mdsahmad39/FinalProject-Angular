@@ -1,47 +1,27 @@
-<nav class="navbar navbar-default navbar-expand-lg navbar-white bg-white" *ngIf="!customerStatus && !sellerStatus">
- <a class="navbar-brand" href="#"
-  style="padding-left: 10px !important; color:black;"><i><strong>ShopGrocery</strong></i></a>
- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
- </button>
- <div class="collapse navbar-collapse" id="navbarNavDropdown">
-  <ul *ngIf="!customerStatus" class="navbar-nav" style="margin-left: 20px;">
-   <li class="nav-item active">
-    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-   </li>
-  </ul>
-  <div class="offset-lg-9">
-   <a class="btn btn-primary mr-sm-2" href="#loginRegister">Login</a>
-   <a class="btn btn-primary mr-sm-2" href="#loginRegister">Register</a>
-  </div>
- </div>
-</nav>
-<nav class="navbar navbar-default navbar-expand-lg navbar-white bg-white" *ngIf="customerStatus">
- <a class="navbar-brand" href="#"
-  style="padding-left: 10px !important; color:black;"><i><strong>ShopGrocery</strong></i></a>
- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
- </button>
- <div class="collapse navbar-collapse" id="navbarNavDropdown">
-  <ul *ngIf="!customerStatus" class="navbar-nav" style="margin-left: 20px;">
-   <li class="nav-item active">
-    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-   </li>
-   <li class="nav-item">
-    <a class="nav-link" routerLink="products" style="color:black;">Nearby Grocery Shops</a>
-   </li>
-   <li class="nav-item"><a class="btn btn-primary mr-sm-2" routerLink="profile_seller">seller profile</a>
-   </li>
-   <li class="nav-item"><a class="btn btn-primary mr-sm-2" routerLink="profile_customer">customer profile</a>
-   </li>
-  </ul>
-  <!-- <div class="offset-lg-4">
+<nav class="navbar navbar-default navbar-expand-lg navbar-white bg-white">
+  <a class="navbar-brand" href="#"
+    style="padding-left: 10px !important; color:black;"><i><strong>ShopGrocery</strong></i></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav" style="margin-left: 20px;">
+      <li class="nav-item active" *ngIf="isSellerLoggedIn$ | async as isSellerLoggedIn">
+        <a class="nav-link" routerLink="dashboardSeller">Dashboard <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item"><a class="btn btn-primary mr-sm-2" routerLink="profileSeller"
+          *ngIf="isSellerLoggedIn$ | async as isSellerLoggedIn">seller profile</a>
+      </li>
+      <li class="nav-item"><a class="btn btn-primary mr-sm-2" routerLink="profileCustomer"
+          *ngIf="isCustomerLoggedIn$ | async as isCustomerLoggedIn">customer profile</a>
+      </li>
+    </ul>
+    <!-- <div class="offset-lg-4">
    <a class="btn btn-primary mr-sm-2" routerLink="login_seller">Login as Seller</a>
    <a class="btn btn-primary mr-sm-2" routerLink="register_customer">Register as Customer</a>
    <a class="btn btn-primary mr-sm-2" routerLink="register_store">Register as Seller</a>
   </div> -->
- </div>
+  </div>
 </nav>
 <hr class="style-hr">

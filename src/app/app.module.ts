@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,15 +27,15 @@ import { HeaderComponent } from './common/header/header.component';
 
 const appRoute: Routes = [
   { path: '', component: HomepageComponent },
-  { path: 'login_customer', component: LoginComponent },
-  { path: 'login_seller', component: SellerLoginComponent },
-  { path: 'register_customer', component: RegisterComponent },
-  { path: 'register_seller', component: SellerRegisterComponent },
+  { path: 'loginCustomer', component: LoginComponent },
+  { path: 'loginSeller', component: SellerLoginComponent },
+  { path: 'registerCustomer', component: RegisterComponent },
+  { path: 'registerSeller', component: SellerRegisterComponent },
   { path: 'adminDashboard', component: AdminDashboardComponent },
-  { path: 'dashboard_customer', canActivate: [CustomerAuthGuard], component: DashboardComponent },
-  { path: 'dashboard_seller', canActivate: [SellerAuthGuard], component: SellerDashboardComponent },
-  { path: 'profile_seller', canActivate: [SellerAuthGuard], component: SellerProfileComponent },
-  { path: 'profile_customer', canActivate: [CustomerAuthGuard], component: ProfileComponent },
+  { path: 'dashboardCustomer', canActivate: [CustomerAuthGuard], component: DashboardComponent },
+  { path: 'dashboardSeller', canActivate: [SellerAuthGuard], component: SellerDashboardComponent },
+  { path: 'profileSeller', canActivate: [SellerAuthGuard], component: SellerProfileComponent },
+  { path: 'profileCustomer', canActivate: [CustomerAuthGuard], component: ProfileComponent },
   { path: 'storeDisplay', canActivate: [CustomerAuthGuard], component: StoreDisplayComponent }
 ];
 
@@ -59,7 +61,9 @@ const appRoute: Routes = [
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(appRoute),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

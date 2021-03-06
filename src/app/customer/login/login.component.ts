@@ -19,16 +19,7 @@ export class LoginComponent implements OnInit {
     if (loginForm.loginId === 'admin' && loginForm.password === 'admin') {
       this.router.navigate(['adminDashboard']);
     } else {
-      await this.customerService.loginCustomer(loginForm).toPromise().then((data: any) => { this.customer = data; });
-      if (this.customer) {
-        this.customerService.setCustomerLoggedIn();
-        this.customerService.setCustomerId(this.customer.storeId);
-        this.customerService.setCustomerProfile(this.customer);
-        this.router.navigate(['dashboard_customer']);
-      } else {
-        alert("login failed, Please register in next page for able use this Application");
-        this.router.navigate(['register_store']);
-      }
+      this.customerService.loginSeller(loginForm);
     }
   }
 
