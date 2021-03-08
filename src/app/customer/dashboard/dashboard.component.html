@@ -1,15 +1,23 @@
-<div class="row offset-md-1">
- <h3 style="text-align: center;"><strong>Available stores where you can buy from...</strong></h3>
- <div class="col-md-3" *ngFor="let store of storesList" style="margin-top: 20px;">
-  <div class="card" style="width: 16rem;height: 20rem;">
+<p class="title">Stores</p>
+<div class="row store-container">
+ <div class="col-md-4" *ngFor="let store of storesList" style="margin-top: 20px;">
+  <div class="store-card">
    <img class="card-img-top" [src]="imagePath" alt="Card Image" />
    <div class="cart-body">
-    <p class="card-text"><strong>Store Name: </strong>{{store.storeName}}</p>
-    <p class="card-text"><strong>Store Contact: </strong>{{store.phone}}</p>
+    <p class="store-title">{{store.storeName}}
+    </p>
+    <p class="card-text"><strong>Seller: </strong><span style="text-transform: uppercase;">{{store.sellerName}}</span>
+    </p>
+    <p class="card-text"><strong>Address: </strong>{{store.address.houseNo}}, {{store.address.street}},
+     {{store.address.city}}-{{store.address.pincode}}, {{store.address.state}}.</p>
+    <p class="card-text"><strong>Categories Available: </strong>70</p>
+    <p class="card-text"><strong>Products Available: </strong>270</p>
    </div>
    <div class="row">
     <div class="col">
-     <div><button class="btn btn-primary" (click)="goToStore(store)">Go To store</button></div>
+     <div><button class="btn btn-outline-info" style="float: right; margin-top: 8px;" (click)="goToStore(store)">Go To
+       store</button>
+     </div>
     </div>
    </div>
   </div>

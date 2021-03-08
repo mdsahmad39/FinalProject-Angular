@@ -11,7 +11,7 @@ import { CustomerService } from '../customer.service';
 export class RegisterComponent implements OnInit {
 
   countriesList: any;
-  customer:any;
+  customer: any;
 
   constructor(public customerService: CustomerService, public commonService: CommonService, public router: Router) { }
 
@@ -21,16 +21,16 @@ export class RegisterComponent implements OnInit {
 
   submitRegisterForm(registerForm: any): void {
     console.log(registerForm);
-    this.customer={
-      userId:'',
-      firstName:registerForm.firstName,
-      lastName:registerForm.lastName,
-      gender:registerForm.gender,
-      emailId:registerForm.emailId,
-      phoneNumber:registerForm.phoneNumber,
-      loginId:registerForm.loginId,
-      password:registerForm.password,
-      address:{addressId:'',houseNo:registerForm.houseNo,street:registerForm.street,city:registerForm.city,pincode:registerForm.pincode,state:registerForm.state,country:registerForm.country}
+    this.customer = {
+      userId: '',
+      firstName: registerForm.firstName,
+      lastName: registerForm.lastName,
+      gender: registerForm.gender,
+      emailId: registerForm.emailId,
+      phoneNumber: registerForm.phoneNumber,
+      loginId: registerForm.loginId,
+      password: registerForm.password,
+      address: { addressId: '', houseNo: registerForm.houseNo, street: registerForm.street, city: registerForm.city, pincode: registerForm.pincode, state: registerForm.state, country: registerForm.country }
     };
     this.customerService.register(this.customer).subscribe((result: any) => console.log(result));
     this.router.navigate(['']);
