@@ -15,8 +15,11 @@ export class MyCartComponent implements OnInit {
   additionalProductsList: any[] = [];
   finalOrdersList: any[] = [];
   totalPrice: number = 0;
+  purchasedQuantity: any;
 
-  constructor(public customerService: CustomerService, public router: Router, public sellerService: SellerService) { }
+  constructor(public customerService: CustomerService, public router: Router, public sellerService: SellerService) {
+    this.purchasedQuantity = 1;
+  }
 
   ngOnInit(): void {
     this.cartProductsList = this.customerService.getProductsInCart();

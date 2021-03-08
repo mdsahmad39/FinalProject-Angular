@@ -15,7 +15,8 @@
     <br>
     <div class="card-text"><i>Quantity:</i></div>
     <form novalidate>
-     <input type="number" name="purchasedQuantity" style="width: 80px;" value="1" min="1" max="100" ngModel required>
+     <input type="number" name="purchasedQuantity" style="width: 80px;" value="1" min="1" max="100"
+      [(ngModel)]="purchasedQuantity" required>
     </form>
    </div>
    <div class="col-md-3 card-text">
