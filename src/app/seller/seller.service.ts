@@ -43,7 +43,7 @@ export class SellerService {
   }
 
   register(registerForm: any) {
-    return this.httpClient.post('register_store', registerForm);
+    return this.httpClient.post('registerStore', registerForm);
   }
 
   getAllproducts(storeId: any) {
