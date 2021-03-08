@@ -22,7 +22,7 @@ export class CustomerService {
   }
 
   async loginCustomer(loginForm: any) {
-    await this.httpClient.get('login_customer/' + loginForm.loginId + '/' + loginForm.password).toPromise().then((data: any) => { this.customer = data; });
+    await this.httpClient.get('loginCustomer/' + loginForm.loginId + '/' + loginForm.password).toPromise().then((data: any) => { this.customer = data; });
     if (this.customer) {
       this.customerLoggedIn.next(true);
       this.router.navigate(['dashboardCustomer']);

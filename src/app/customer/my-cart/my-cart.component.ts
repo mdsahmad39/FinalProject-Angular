@@ -14,21 +14,47 @@ export class MyCartComponent implements OnInit {
   cartProductsList: any[] = [];
   additionalProductsList: any[] = [];
   finalOrdersList: any[] = [];
+  orderDetails:any[]=[];
   totalPrice: number = 0;
-  purchasedQuantity: any;
 
   constructor(public customerService: CustomerService, public router: Router, public sellerService: SellerService) {
-    this.purchasedQuantity = 1;
+
+    for (var product of this.cartProductsList) {
+      product.listPrice=product.purchasedQuantity*product.price;
+      this.totalPrice += product.Price;
+      console.log(product.price);
+    }
+    console.log(this.totalPrice);
+  }
+
+  refresh(prod : any)
+  {
+    if(this.cartProductsList.includes(prod))
+    {
+      this.cartProductsList[this.cartProductsList.indexOf(prod)].listPrice=prod.purchasedQuantity*prod.price;
+      this.totalPriceFun();
+    }
+  }
+
+  totalPriceFun()
+  {
+    this.totalPrice=0;
+    for(var prod of this.cartProductsList)
+    {
+      this.totalPrice+=prod.listPrice;
+    }
   }
 
   ngOnInit(): void {
     this.cartProductsList = this.customerService.getProductsInCart();
 
-    for (var product of this.cartProductsList) {
+    /*for (var product of this.cartProductsList) {
+      product['purchasedQuantity']='1';
+      product['listPrice']=product.purchasedQuantity*product.price;
       this.totalPrice += product.price;
       console.log(product.price);
-    }
-    console.log(this.totalPrice);
+    
+    console.log(this.totalPrice);*/
 
     // this.sellerService.getAllproducts(this.customerService.getSellerId()).subscribe((data: any) => {
     //   // this.allProducts = data;
