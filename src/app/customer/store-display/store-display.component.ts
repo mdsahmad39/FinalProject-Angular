@@ -24,6 +24,8 @@ export class StoreDisplayComponent implements OnInit {
   }
 
   addToCart(product: any) {
+    product['purchasedQuantity']="1";
+    product['listPrice']=product.price;
     this.customerService.setProductInCart(product);
   }
 

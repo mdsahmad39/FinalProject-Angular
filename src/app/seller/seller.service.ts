@@ -47,7 +47,7 @@ export class SellerService {
   }
 
   getAllproducts(storeId: any) {
-    return this.httpClient.get('get_products_by_store/' + storeId);
+    return this.httpClient.get('getAllProducts/' + storeId);
   }
 
   updateProduct(product: any): any {
