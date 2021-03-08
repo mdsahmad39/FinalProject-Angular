@@ -1,20 +1,16 @@
-<h3 style="text-align: center;"><u><strong>Seller Login Page</strong></u></h3>
-
-<div class="login-block  col-lg-4 offset-4 offset-md-4 offset-lg-4">
- <form #loginForm="ngForm" (ngSubmit)="submitLoginForm(loginForm.value)" novalidate>
-  <label for="loginid" class="text-uppercase">Login ID:</label>
-  <input type="text" name="loginId" placeholder="loginid..." class="form-control" #loginId="ngModel" ngModel required
-   minlength="4">
-  <br>
-  <label for="password" class="text-uppercase">Password:</label>
-  <input type="password" name="password" placeholder="password..." class="form-control" #password="ngModel" ngModel
-   required minlength="4">
-  <br>
-  <button class="btn btn-outline-success" [disabled]="!loginForm.valid">Login</button>
- </form>
-
- <div *ngIf="loginId.errors?.required">Enter Login ID</div>
- <div *ngIf="password.errors?.required">Enter Password</div>
- <div *ngIf="loginId.errors?.minlength">Login Id has min 4 chars</div>
- <div *ngIf="password.errors?.minlength">Password has min 4 chars</div>
+<div class="login-container">
+ <div class="login-block col-lg-4 offset-4 offset-md-4 offset-lg-4">
+  <form #loginForm="ngForm" (ngSubmit)="submitLoginForm(loginForm.value)" novalidate>
+   <div class="input-container">
+    <input type="loginId" name="loginId" #password="ngModel" ngModel required minlength="4">
+    <label>Login ID</label>
+   </div>
+   <div class="input-container">
+    <input type="password" name="password" #loginId="ngModel" ngModel required minlength="4">
+    <label>Password</label>
+   </div>
+   <br>
+   <button class="btn btn-outline-success" [disabled]="!loginForm.valid">Login</button>
+  </form>
+ </div>
 </div>

@@ -24,10 +24,13 @@ export class SellerService {
     await this.httpClient.get('login_seller/' + loginForm.loginId + '/' + loginForm.password).toPromise().then((data: any) => { this.seller = data; });
     if (this.seller) {
       this.sellerLoggedIn.next(true);
-
-      console.log(this.seller.storeId);
       this.router.navigate(['dashboardSeller']);
     }
+  }
+
+  logoutSeller(): any {
+    this.sellerLoggedIn.next(false);
+    this.router.navigate(['']);
   }
 
 

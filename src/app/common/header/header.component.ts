@@ -21,4 +21,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onCustomerLogout(): any {
+    this.customerService.logoutCustomer();
+  }
+
+  onSellerLogout(): any {
+    this.sellerService.logoutSeller();
+  }
+
 }

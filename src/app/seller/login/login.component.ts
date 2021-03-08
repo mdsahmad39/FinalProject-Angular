@@ -18,6 +18,7 @@ export class SellerLoginComponent implements OnInit {
   }
 
   submitLoginForm(loginForm: any) {
+    console.log(loginForm);
     if (loginForm.loginId === 'admin' && loginForm.password === 'admin') {
       this.router.navigate(['adminDashboard']);
     } else {

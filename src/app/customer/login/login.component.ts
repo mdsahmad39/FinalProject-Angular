@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     if (loginForm.loginId === 'admin' && loginForm.password === 'admin') {
       this.router.navigate(['adminDashboard']);
     } else {
-      this.customerService.loginSeller(loginForm);
+      this.customerService.loginCustomer(loginForm);
     }
   }
 

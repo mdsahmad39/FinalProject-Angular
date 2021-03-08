@@ -1,4 +1,82 @@
 <div class="container">
+
+ <div id="editCustomer" class="modal fade">
+  <div class="modal-dialog">
+
+   <div class="modal-content">
+
+    <div class="modal-header">
+     <button class="close" style="float: right;" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+    </div>
+
+    <div class="modal-body">
+     <form #editForm="ngForm" novalidate>
+
+      <input class="form-control" type="number" name="userId" [(ngModel)]="editCustomer.userId" ngModel readonly>
+      <br>
+
+      <input class="form-control" type="text" name="firstName" [(ngModel)]="editCustomer.firstName" ngModel required>
+      <br>
+
+      <input class="form-control" type="text" name="lastName" [(ngModel)]="editCustomer.lastName" ngModel required>
+      <br>
+
+      <input class="form-control" type="text" name="gender" [(ngModel)]="editCustomer.gender" ngModel required>
+      <br>
+
+      <input class="form-control" type="text" name="emailId" [(ngModel)]="editCustomer.emailId" ngModel required>
+      <br>
+
+      <input class="form-control" type="number" name="phoneNumber" [(ngModel)]="editCustomer.phoneNumber" ngModel
+       required>
+      <br>
+
+      <input class="form-control" type="text" name="loginId" [(ngModel)]="editCustomer.loginId" ngModel required>
+      <br>
+
+      <input class="form-control" type="text" name="password" [(ngModel)]="editCustomer.password" ngModel hidden>
+      <br>
+
+      <input class="form-control" type="number" name="addressId" [(ngModel)]="editCustomer.address.addressId" ngModel
+       readonly>
+      <br>
+
+      <input class="form-control" type="text" name="houseNo" [(ngModel)]="editCustomer.address.houseNo" ngModel
+       required>
+      <br>
+
+      <input class="form-control" type="text" name="street" [(ngModel)]="editCustomer.address.street" ngModel required>
+      <br>
+
+      <input class="form-control" type="text" name="city" [(ngModel)]="editCustomer.address.city" ngModel required>
+      <br>
+
+      <input class="form-control" type="number" name="pincode" [(ngModel)]="editCustomer.address.pincode" ngModel
+       required>
+      <br>
+
+      <input class="form-control" type="text" name="state" [(ngModel)]="editCustomer.address.state" ngModel required>
+      <br>
+
+      <input class="form-control" type="text" name="country" [(ngModel)]="editCustomer.address.country" ngModel
+       required>
+      <br>
+
+      <input class="form-control" type="text" name="orders" [(ngModel)]="editCustomer.orders" ngModel readonly>
+      <br>
+
+     </form>
+    </div>
+
+    <div class="modal-footer">
+     <button (click)="updateCustomer()" class="btn btn-default" data-dismiss="modal">Update Product</button>
+    </div>
+   </div>
+
+  </div>
+ </div>
+
+
  <h3 style="text-align: center;">Welcome <span class="text-uppercase">{{customer.lastName}}</span>!</h3>
  <div class="col-md-8 offset-lg-2">
   <div class="card mb-3">
@@ -8,10 +86,7 @@
       <h6 class="mb-0">Full Name</h6>
      </div>
      <div class="col-sm-8 text-secondary">
-      {{customer.firstname}} {{customer.lastName}}
-     </div>
-     <div class="col-sm-1">
-      <a><button style="all: unset;"><i class="fas fa-user-edit"></i></button></a>
+      {{customer.firstName}} {{customer.lastName}}
      </div>
     </div>
     <hr>
@@ -22,9 +97,6 @@
      <div class="col-sm-8 text-secondary">
       {{customer.emailId}}
      </div>
-     <div class="col-sm-1">
-      <a><button style="all: unset;"><i class="fas fa-user-edit"></i></button></a>
-     </div>
     </div>
     <hr>
     <div class="row">
@@ -33,9 +105,6 @@
      </div>
      <div class="col-sm-8 text-secondary">
       {{customer.phoneNumber}}
-     </div>
-     <div class="col-sm-1">
-      <a><button style="all: unset;"><i class="fas fa-user-edit"></i></button></a>
      </div>
     </div>
     <hr>
@@ -47,9 +116,11 @@
       H.No: {{customer.address.houseNo}}, {{customer.address.street}}, {{customer.address.city}},
       {{customer.address.pincode}}.
      </div>
-     <div class="col-sm-1">
-      <a><button style="all: unset;"><i class="fas fa-user-edit"></i></button></a>
-     </div>
+    </div>
+    <br>
+    <div class="offset-10">
+     <button (click)=showEditPopUp(customer) class="btn btn-outline-info">Edit Profile<i
+       class="fas fa-user-edit"></i></button>
     </div>
    </div>
   </div>

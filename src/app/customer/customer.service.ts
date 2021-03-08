@@ -19,12 +19,17 @@ export class CustomerService {
     return this.customerLoggedIn.asObservable();
   }
 
-  async loginSeller(loginForm: any) {
+  async loginCustomer(loginForm: any) {
     await this.httpClient.get('login_customer/' + loginForm.loginId + '/' + loginForm.password).toPromise().then((data: any) => { this.customer = data; });
     if (this.customer) {
       this.customerLoggedIn.next(true);
       this.router.navigate(['dashboardCustomer']);
     }
+  }
+
+  logoutCustomer() {
+    this.customerLoggedIn.next(false);
+    this.router.navigate(['']);
   }
 
   getCustomerId(): any {
@@ -43,15 +48,15 @@ export class CustomerService {
     return this.seller;
   }
 
-  loginCustomer(loginForm: any) {
-    return this.httpClient.get('login_customer/' + loginForm.loginId + '/' + loginForm.password);
-  }
-
   register(registerForm: any) {
     return this.httpClient.post('register_customer', registerForm);
   }
 
   getAllStores(): any {
     return this.httpClient.get('getAllStores');
+  }
+
+  updateCustomer(customer: any): any {
+    return this.httpClient.post('updateCustomer', customer);
   }
 }
