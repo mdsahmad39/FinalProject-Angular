@@ -49,7 +49,7 @@ export class CustomerService {
   }
 
   register(registerForm: any) {
-    return this.httpClient.post('register_customer', registerForm);
+    return this.httpClient.post('registerCustomer', registerForm);
   }
 
   getAllStores(): any {

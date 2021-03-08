@@ -1,94 +1,97 @@
 <h1 id="title"><u>Customer Registration Page</u></h1>
-<section class="container">
- <div class="register-block col-lg-6 offset-md-2 offset-lg-3">
-  <form #registerForm="ngForm" (ngSubmit)="submitRegisterForm(registerForm.value)" novalidate>
+<div class="register-container">
+    <div class="register-block col-lg-6 offset-md-2 offset-lg-3">
+        <form #registerForm="ngForm" (ngSubmit)="submitRegisterForm(registerForm.value)" novalidate>
 
-   <label for="firstName" class="text-uppercase">First Name:</label>
-   <input type="text" name="firstName" placeholder="First Name..." class="form-control" #firstName="ngModel" ngModel
-    required>
-   <div *ngIf="firstName.errors?.required" class="warning-text">*Enter First Name</div>
-   <br>
+            <div class="input-container">
+                <input type="text" name="firstName" #firstName="ngModel" ngModel required>
+                <label>First Name</label>
+            </div>
 
-   <label for="lastName" class="text-uppercase">Last Name:</label>
-   <input type="text" name="lastName" placeholder="Last Name..." class="form-control" #lastName="ngModel" ngModel
-    required>
-   <div *ngIf="lastName.errors?.required" class="warning-text">*Enter Last Name</div>
-   <br>
+            <div class="input-container">
+                <input type="text" name="lastName" #lastName="ngModel" ngModel required>
+                <label>Last Name</label>
+            </div>
 
-   <label for="gender" class="text-uppercase" style="margin-right: 100px;">Gender:</label>
-   <select class="form-select" name="gender" id="gender" #gender="ngModel" style="width: 100px;" ngModel required>
-    <option value="male">MALE</option>
-    <option value="female">FEMALE</option>
-    <option value="other">OTHER</option>
-   </select>
-   <div *ngIf="gender.errors?.required" class="warning-text">*Select a Gender</div>
-   <br>
+            <div class="input-container">
+                <input list="Gender" name="gender" id="gender" #gender="ngModel" style="width: 100px;" ngModel required>
 
+                <datalist id="Gender">
+                    <option value="MALE">
+                    <option value="FEMALE">
+                    <option value="OTHER">
+                </datalist>
+                <label>Gender</label>
+            </div>
+            <!-- <select class="form-select" name="gender" id="gender" #gender="ngModel" style="width: 100px;" ngModel required>
+<option value="male">MALE</option>
+<option value="female">FEMALE</option>
+<option value="other">OTHER</option>
+</select>-->
 
-   <label for="houseNo" class="text-uppercase">House Number:</label>
-   <input type="text" name="houseNo" placeholder="house Number..." class="form-control" #houseNo="ngModel" ngModel
-    required>
-   <div *ngIf="houseNo.errors?.required" class="warning-text">*Enter House Number</div>
-   <br>
+            <div class="input-container">
+                <input type="text" name="houseNo" #houseNo="ngModel" ngModel required>
+                <label>House Number</label>
+            </div>
 
-   <label for="street" class="text-uppercase">Street:</label>
-   <input type="text" name="street" placeholder="Street..." class="form-control" #street="ngModel" ngModel required>
-   <div *ngIf="street.errors?.required" class="warning-text">*Enter Email Id</div>
-   <br>
+            <div class="input-container">
+                <input type="text" name="street" #street="ngModel" ngModel required>
+                <label>Street</label>
+            </div>
 
-   <label for="city" class="text-uppercase">City:</label>
-   <input type="text" name="city" placeholder="City..." class="form-control" #city="ngModel" ngModel required>
-   <div *ngIf="city.errors?.required" class="warning-text">*Enter City</div>
-   <br>
+            <div class="input-container">
+                <input type="text" name="city" #city="ngModel" ngModel required>
+                <label>City</label>
+            </div>
 
-   <label for="pincode" class="text-uppercase">Pincode:</label>
-   <input type="number" name="pincode" placeholder="Email Id..." class="form-control" #pincode="ngModel" ngModel
-    required>
-   <div *ngIf="pincode.errors?.required" class="warning-text">*Enter Pincode</div>
-   <br>
+            <div class="input-container">
+                <input type="number" name="pincode" #pincode="ngModel" ngModel required>
+                <label>Pincode</label>
+            </div>
 
-   <label for="state" class="text-uppercase">State:</label>
-   <input type="text" name="state" placeholder="State..." class="form-control" #state="ngModel" ngModel required>
-   <div *ngIf="state.errors?.required" class="warning-text">*Enter State</div>
-   <br>
+            <div class="input-container">
+                <input type="text" name="state" #state="ngModel" ngModel required>
+                <label>State</label>
+            </div>
 
-   <label for="country" class="text-uppercase">Country:</label>
+            <div class="input-container">
 
-   <select name="country" id="country" class="form-select" #country="ngModel" ngModel required>
-    <option value="{{country.name}}" *ngFor="let country of countriesList">{{country.name}}</option>
-   </select>
-   <div *ngIf="country.errors?.required" class="warning-text">*Enter Country</div>
-   <br>
+                <input list="Countries" name="country" id="country" #country="ngModel" style="width: 100px;" ngModel
+                    required>
 
-   <label for="emailId" class="text-uppercase">Email Id:</label>
-   <input type="text" name="emailId" placeholder="Email Id..." class="form-control" #emailId="ngModel" ngModel required>
-   <div *ngIf="emailId.errors?.required" class="warning-text">*Enter Email Id</div>
-   <br>
-
-   <label for="phoneNumber" class="text-uppercase">Phone Number:</label>
-   <input type="number" name="phoneNumber" placeholder="Phone Number..." class="form-control" #phoneNumber="ngModel"
-    minlength="10" ngModel required>
-   <div *ngIf="phoneNumber.errors?.required" class="warning-text">*Enter Phone Number</div>
-   <div *ngIf="phoneNumber.errors?.minlength" class="warning-text">*Phone Number has exactly 10 digits</div>
-   <br>
+                <datalist id="Countries">
+                    <option value="{{country.name}}" *ngFor="let country of countriesList">{{country.name}}</option>
+                </datalist>
+                <label>Country</label>
+                <!--<select name="country" id="country" class="form-select" #country="ngModel" ngModel required>
+<option value="{{country.name}}" *ngFor="let country of countriesList">{{country.name}}</option>
+</select>-->
+            </div>
 
 
+            <div class="input-container">
+                <input type="text" name="emailId" #emailId="ngModel" ngModel required>
+                <label>Email Id</label>
+            </div>
 
-   <label for="loginId" class="text-uppercase">Login Id:</label>
-   <input type="text" name="loginId" placeholder="loginId..." class="form-control" #loginId="ngModel" minlength="4"
-    ngModel required>
-   <div *ngIf="loginId.errors?.required" class="warning-text">*Enter Login ID</div>
-   <div *ngIf="loginId.errors?.minlength" class="warning-text">*Login Id has min 4 chars</div>
-   <br>
 
-   <label for="password" class="text-uppercase">Password:</label>
-   <input type="password" name="password" placeholder="password..." class="form-control" #password="ngModel" ngModel
-    required minlength="8">
-   <div *ngIf="password.errors?.required" class="warning-text">*Enter Password</div>
-   <div *ngIf="password.errors?.minlength" class="warning-text">*Password has min 6 chars</div>
-   <br>
+            <div class="input-container">
+                <input type="number" name="phoneNumber" #phoneNumber="ngModel" minlength="10" ngModel required>
+                <label>Phone Number</label>
+            </div>
 
-   <button class="btn btn-outline-success" [disabled]="!registerForm.valid">Register</button>
-  </form>
- </div>
-</section>
+
+            <div class="input-container">
+                <input type="text" name="loginId" #loginId="ngModel" minlength="4" ngModel required>
+                <label>Login Id</label>
+            </div>
+
+            <div class="input-container">
+                <input type="password" name="password" #password="ngModel" ngModel required minlength="8">
+                <label>Password</label>
+            </div>
+
+            <button class="btn btn-success" [disabled]="!registerForm.valid">Register</button>
+        </form>
+    </div>
+</div>
