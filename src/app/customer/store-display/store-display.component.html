@@ -40,10 +40,11 @@
      </div>
     </div>
     <div class="row">
-     <div><button class="btn btn-danger" style="float: right;">Add to cart</button>
+     <div><button class="btn btn-danger" (click)=addToCart(product) style="float: right;">Add to cart</button>
      </div>
     </div>
    </div>
   </div>
+  <button (click)=checkOut()>Checkout</button>
  </div>
 </section>

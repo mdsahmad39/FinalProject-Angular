@@ -23,6 +23,7 @@ import { CustomerAuthGuard } from './customer/auth.guard';
 import { SellerAuthGuard } from './seller/auth.guard';
 import { FooterComponent } from './common/footer/footer.component';
 import { HeaderComponent } from './common/header/header.component';
+import { MyCartComponent } from './customer/my-cart/my-cart.component';
 
 
 const appRoute: Routes = [
@@ -36,7 +37,8 @@ const appRoute: Routes = [
   { path: 'dashboardSeller', canActivate: [SellerAuthGuard], component: SellerDashboardComponent },
   { path: 'profileSeller', canActivate: [SellerAuthGuard], component: SellerProfileComponent },
   { path: 'profileCustomer', canActivate: [CustomerAuthGuard], component: ProfileComponent },
-  { path: 'storeDisplay', canActivate: [CustomerAuthGuard], component: StoreDisplayComponent }
+  { path: 'storeDisplay', canActivate: [CustomerAuthGuard], component: StoreDisplayComponent },
+  { path: 'myCart', canActivate: [CustomerAuthGuard], component: MyCartComponent }
 ];
 
 @NgModule({
@@ -54,7 +56,8 @@ const appRoute: Routes = [
     SellerRegisterComponent,
     AdminDashboardComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    MyCartComponent
   ],
   imports: [
     BrowserModule,
