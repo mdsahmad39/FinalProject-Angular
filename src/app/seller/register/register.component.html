@@ -65,13 +65,19 @@
 
 
             <div class="input-container">
-                <input type="text" name="loginId" #loginId="ngModel" minlength="4" ngModel required>
+                <input type="text" name="loginId" #loginId="ngModel" minlength="4" [(ngModel)]="storeLogin" required>
                 <label>Login Id</label>
             </div>
 
             <div class="input-container">
-                <input type="password" name="password" #password="ngModel" ngModel required minlength="8">
-                <label>Password</label>
+                <input type="password" id="password" name="password" #password="ngModel" ngModel required minlength="8">
+                <label for="password">Password</label>
+            </div>
+
+            <div class="input-container" >
+                <h6 style="color: whitesmoke;">Select Image:</h6>
+                <input type="file" accept="image/*" (change)="onSelectFile($event)" name="storeImage" #StoreImage="ngModel" ngModel required>
+                <!--<button (click)="onUpload()">Upload</button>-->
             </div>
 
 

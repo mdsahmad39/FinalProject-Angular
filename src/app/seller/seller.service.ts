@@ -11,6 +11,7 @@ export class SellerService {
   private sellerLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   sellerId: any;
   seller: any;
+  newFileName:any
 
   constructor(public httpClient: HttpClient, public router: Router) {
     this.sellerId = 0;
@@ -61,4 +62,9 @@ export class SellerService {
   deleteProduct(product: any): any {
     return this.httpClient.post('deleteProduct/', product);
   }
+
+  upload(uploadFile: any) :any{
+    return this.httpClient.post('/upload',uploadFile);
+  }
+
 }
