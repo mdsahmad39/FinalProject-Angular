@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SellerService } from 'src/app/seller/seller.service';
+import { CartService } from '../cart.service';
 import { CustomerService } from '../customer.service';
 
 @Component({
@@ -13,7 +14,11 @@ export class StoreDisplayComponent implements OnInit {
   store: any;
   productsList: any;
   imagePath: any;
-  constructor(public customerService: CustomerService, public sellerService: SellerService, public router: Router) { }
+  productName: any;
+
+  constructor(public customerService: CustomerService, public sellerService: SellerService, public router: Router, public cartService: CartService) {
+    this.productName = "";
+  }
 
   ngOnInit(): void {
     this.store = this.customerService.getSellerProfile();
@@ -24,13 +29,16 @@ export class StoreDisplayComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    product['purchasedQuantity']="1";
-    product['listPrice']=product.price;
-    this.customerService.setProductInCart(product);
+    this.cartService.setProductInCart(product);
   }
 
   checkOut() {
     this.router.navigate(['myCart']);
+  }
+
+  searchByName(): any {
+    this.customerService.getProductByName(this.productName).subscribe((data: any) => this.customerService.setProductByName(data));
+    this.router.navigate(['productByName']);
   }
 
 }

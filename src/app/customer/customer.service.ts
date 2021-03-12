@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { SellerService } from '../seller/seller.service';
+import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class CustomerService {
   private customerLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   customer: any;
   seller: any;
-  productsList: any = [];
+  productsList: any;
+  productByName: any;
 
   constructor(public httpClient: HttpClient, public router: Router, public sellerService: SellerService) {
   }
@@ -54,6 +56,14 @@ export class CustomerService {
     return this.seller.storeId;
   }
 
+  setProductByName(product: any) {
+    this.productByName = product;
+  }
+
+  gettingProductByName(): any {
+    return this.productByName;
+  }
+
   register(registerForm: any) {
     return this.httpClient.post('registerCustomer', registerForm);
   }
@@ -66,17 +76,13 @@ export class CustomerService {
     return this.httpClient.post('updateCustomer', customer);
   }
 
-  setProductInCart(product: any) {
-    this.productsList.push(product);
-  }
-
-  getProductsInCart(): any {
-    return this.productsList;
-  }
-
   getAllProducts(): any {
     this.sellerService.getAllproducts(this.seller.storeId).subscribe((data: any) => { this.productsList = data; });
     console.log(this.productsList);
+  }
+
+  getProductByName(productName: any): any {
+    return this.httpClient.get('getProductByName/' + productName);
   }
 
 }

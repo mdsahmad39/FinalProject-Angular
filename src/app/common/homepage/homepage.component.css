@@ -17,7 +17,7 @@
 
 .count{
  color: #fff;
- font-size: 60px;
+ font-size: 40px;
  font-family: 'Abril Fatface', cursive;
  text-align: center;
  z-index: 100;
@@ -140,7 +140,7 @@ div#slider figure {
 }
 
 .seller-block-data .title{
- font-size: 40px;
+ font-size: 32px;
  font-family: 'Abril Fatface', cursive;
  text-align: left;
  position: relative;
@@ -153,7 +153,7 @@ div#slider figure {
 }
 
 .cust-block-data .title{
- font-size: 40px;
+ font-size: 32px;
  font-family: 'Abril Fatface', cursive;
 }
 
@@ -237,4 +237,46 @@ div#slider figure {
 
 .hr-style{
  margin: 30px 0;
+}
+
+#front-text p {
+    margin-top: 25px;
+    font-size: 21px;
+    text-align: center;
+    animation: fadein 4s;
+    -moz-animation: fadein 4s; /* Firefox */
+    -webkit-animation: fadein 4s; /* Safari and Chrome */
+    -o-animation: fadein 4s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
 }
