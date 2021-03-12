@@ -11,4 +11,8 @@ export class CommonService {
   getAllCountries(): any {
     return this.httpClient.get('https://restcountries.eu/rest/v2/all');
   }
+
+  getStoresCount(): any {
+    return this.httpClient.get('getStoresCount');
+  }
 }

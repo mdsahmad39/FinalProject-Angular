@@ -3,16 +3,22 @@
 }
 
 .product-card{
- width:430px;
- height: 640px;
+ width:320px;
+ height: 320px;
  margin:10px;
  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
  border-radius: 6px;
- padding: 4px;
+ transition: transform 0.5s;
+ -webkit-transition: transform 0.5s;
 }
 
-.cart-image img{
- height: 150px;
+.product-card:hover{
+ transform: scale(1.1);
+ -webkit-transform: scale(1.1);
+}
+
+.cart-body img{
+ height: 160px;
 }
 
 .hvr-underline-from-center {

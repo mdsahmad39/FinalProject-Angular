@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { CommonService } from '../common.service';
 
 @Component({
   selector: 'app-homepage',
@@ -8,9 +9,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private toastr: ToastrService) { }
+  storesCount: any;
+  constructor(private toastr: ToastrService, public commonService: CommonService) { }
 
   ngOnInit(): void {
+    this.commonService.getStoresCount().subscribe((data: any) => this.storesCount = data);
   }
 
   showToaster() {

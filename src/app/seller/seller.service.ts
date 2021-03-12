@@ -21,7 +21,7 @@ export class SellerService {
   }
 
   async loginSeller(loginForm: any) {
-    await this.httpClient.get('login_seller/' + loginForm.loginId + '/' + loginForm.password).toPromise().then((data: any) => { this.seller = data; });
+    await this.httpClient.get('loginSeller/' + loginForm.loginId + '/' + loginForm.password).toPromise().then((data: any) => { this.seller = data; });
     if (this.seller) {
       this.sellerLoggedIn.next(true);
       this.router.navigate(['dashboardSeller']);
@@ -47,7 +47,7 @@ export class SellerService {
   }
 
   getAllproducts(storeId: any) {
-    return this.httpClient.get('getAllProducts/' + storeId);
+    return this.httpClient.get('getProductByStore/' + storeId);
   }
 
   updateProduct(product: any): any {

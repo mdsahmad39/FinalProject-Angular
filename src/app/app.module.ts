@@ -24,10 +24,12 @@ import { SellerAuthGuard } from './seller/auth.guard';
 import { FooterComponent } from './common/footer/footer.component';
 import { HeaderComponent } from './common/header/header.component';
 import { MyCartComponent } from './customer/my-cart/my-cart.component';
+import { OrderPlacedComponent } from './customer/order-placed/order-placed.component';
+import { ProductByNameComponent } from './customer/product-by-name/product-by-name.component';
 
 
 const appRoute: Routes = [
-  { path: '', component: HomepageComponent },
+  { path: '', component: AdminDashboardComponent },
   { path: 'loginCustomer', component: LoginComponent },
   { path: 'loginSeller', component: SellerLoginComponent },
   { path: 'registerCustomer', component: RegisterComponent },
@@ -38,7 +40,9 @@ const appRoute: Routes = [
   { path: 'profileSeller', canActivate: [SellerAuthGuard], component: SellerProfileComponent },
   { path: 'profileCustomer', canActivate: [CustomerAuthGuard], component: ProfileComponent },
   { path: 'storeDisplay', canActivate: [CustomerAuthGuard], component: StoreDisplayComponent },
-  { path: 'myCart', canActivate: [CustomerAuthGuard], component: MyCartComponent }
+  { path: 'myCart', canActivate: [CustomerAuthGuard], component: MyCartComponent },
+  { path: 'orderPlaced', canActivate: [CustomerAuthGuard], component: OrderPlacedComponent },
+  { path: 'productByName', canActivate: [CustomerAuthGuard], component: ProductByNameComponent }
 ];
 
 @NgModule({
@@ -57,7 +61,9 @@ const appRoute: Routes = [
     AdminDashboardComponent,
     FooterComponent,
     HeaderComponent,
-    MyCartComponent
+    MyCartComponent,
+    OrderPlacedComponent,
+    ProductByNameComponent
   ],
   imports: [
     BrowserModule,

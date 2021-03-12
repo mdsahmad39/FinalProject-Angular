@@ -14,8 +14,8 @@ export class CustomerAuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.customerService.isCustomerLoggedIn.pipe(
       take(1),
-      map((isSellerLoggedIn: boolean) => {
-        if (!isSellerLoggedIn) {
+      map((isCustomerLoggedIn: boolean) => {
+        if (!isCustomerLoggedIn) {
           this.router.navigate(['/loginCustomer']);
           return false;
         }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,19 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  stores: any;
-  constructor() {
-    this.stores = [
-      { storeid: 1, storename: 'dmart', Totalavaliableproducts: 34, orderrecevived: 'yes', storeworkingstatus: 'opened' },
-      { storeid: 2, storename: 'smart', Totalavaliableproducts: 93, orderrecevived: 'yes', storeworkingstatus: 'opened' },
-      { storeid: 3, storename: 'more', Totalavaliableproducts: 68, orderrecevived: 'yes', storeworkingstatus: 'opened' },
-      { storeid: 4, storename: 'trenitra', Totalavaliableproducts: 24, orderrecevived: 'yes', storeworkingstatus: 'opened' },
-      { storeid: 5, storename: 'rathanadeep', Totalavaliableproducts: 72, orderrecevived: 'yes', storeworkingstatus: 'opened' }
-    ];
+  notWorkingStoresList: any;
+  workingStoresList: any;
+  constructor(public adminService: AdminService) {
 
   }
 
   ngOnInit(): void {
+    this.adminService.notWorkingStoresList().subscribe((data: any) => this.notWorkingStoresList = data);
+    this.adminService.workingStoresList().subscribe((data: any) => this.workingStoresList = data);
   }
 
 }
