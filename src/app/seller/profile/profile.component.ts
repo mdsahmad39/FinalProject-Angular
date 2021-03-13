@@ -9,9 +9,35 @@ import { SellerService } from '../seller.service';
 export class SellerProfileComponent implements OnInit {
 
   seller: any;
-  constructor(public sellerService: SellerService) { }
+  imageurl:any;
+  show:any;
+  reader:any
+  imageToUpload:any;
+  fileName:any;
+
+  constructor(public sellerService: SellerService) { 
+    this.show=false;
+    this.imageurl='';
+  }
 
   ngOnInit(): void {
     this.seller = this.sellerService.getSellerProfile();
+  }
+
+  onSelectFile(event:any)
+  {
+    this.imageToUpload=event.target.files[0];
+    this.fileName=this.imageToUpload.name;
+    this.reader = new FileReader();
+    this.reader.onload = (e:any)=>{this.imageurl=e.target.result,this.show=true;};
+    this.reader.readAsDataURL(this.imageToUpload);
+  }
+
+  onUpload()
+  {
+    this.seller.fileName=this.fileName;
+    this.sellerService.updateSellerProfile(this.seller);
+    //this.sellerService.postFile(imageForm,this.imageToUpload).subscribe();
+    this.sellerService.postFile(this.imageToUpload).subscribe((data:any) => { console.log('done')});
   }
 }

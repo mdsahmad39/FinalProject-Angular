@@ -15,9 +15,11 @@ export class StoreDisplayComponent implements OnInit {
   productsList: any;
   imagePath: any;
   productName: any;
+  productsCart:any[]=[];
 
   constructor(public customerService: CustomerService, public sellerService: SellerService, public router: Router, public cartService: CartService) {
     this.productName = "";
+    this.cartService.getProductsInCart().subscribe((result:any) => {for(var res of result ){this.productsCart.push(res)};});
   }
 
   ngOnInit(): void {
@@ -29,7 +31,22 @@ export class StoreDisplayComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    this.cartService.setProductInCart(product);
+   const exists = this.productsCart.some((i)=>{ 
+     if(i.productId===product.productId)
+    {
+       return true;
+    }
+    else
+    {
+      return false;
+    }
+    });
+   console.log(exists);
+    if(!exists)
+    {
+        console.log("add to cart store display if");
+        this.cartService.addProductToCart(product);
+    }
   }
 
   checkOut() {

@@ -1,33 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
-  productsCart: any = [];
-  private productsInCart = new BehaviorSubject([]);
-  productInCart$ = this.productsInCart.asObservable();
 
-  constructor(public httpClient: HttpClient) { }
+export class CartService {
+
+  private productsInCart = new BehaviorSubject<Array<any>>([]);
+  productsCart: any[]=[];
+
+  constructor(public httpClient: HttpClient) {}
 
   addProductToCart(product: any) {
-    if (this.productsCart.includes(product)) {
-      this.productsCart[this.productsCart.indexOf(product)].count += 1;
-    } else {
-      product['count'] = 1;
-      this.productsCart.push(product);
-    }
+      //this.productsCart[this.productsCart.indexOf(product)].count += 1;
+      //} else {
+      //product['count'] = 1;
+      const currentValue = this.productsInCart.value;
+      const updatedValue = [...currentValue, product];
+      this.productsInCart.next(updatedValue);
+      this.productsCart.push(product);  
   }
 
-  setProductInCart(product: any) {
-    this.addProductToCart(product);
-    this.productsInCart.next(this.productsCart);
+  setProductInCart() {
+    //this.productsInCart.next(this.productsCart);
   }
 
   getProductsInCart(): any {
-    return this.productInCart$;
+    return this.productsInCart.asObservable();
   }
 
   placeOrder(orders: any): any {

@@ -29,7 +29,7 @@ import { ProductByNameComponent } from './customer/product-by-name/product-by-na
 
 
 const appRoute: Routes = [
-  { path: '', component: AdminDashboardComponent },
+  { path: '', component: HomepageComponent },
   { path: 'loginCustomer', component: LoginComponent },
   { path: 'loginSeller', component: SellerLoginComponent },
   { path: 'registerCustomer', component: RegisterComponent },

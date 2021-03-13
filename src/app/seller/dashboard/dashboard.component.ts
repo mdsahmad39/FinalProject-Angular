@@ -20,16 +20,21 @@ export class SellerDashboardComponent implements OnInit {
   store: any;
   productName: any;
   subscription: Subscription;
+  imageToUpload:any;
+  fileName:any;
+  reader:any;
+  imageurl:any;
+  show:any;
 
   constructor(public sellerService: SellerService) {
 
-    this.editProduct = { productId: '', productName: '', category: '', brand: '', description: '', weight: '', availableQuantity: '', price: '', createdDate: '', expiryDate: '', store: '', orderDetails: '' };
+    this.editProduct = { productId: '', productName: '', category: '', brand: '', description: '', weight: '', availableQuantity: '', price: '',fileName:'', createdDate: '', expiryDate: '', store: '', orderDetails: '' };
 
     this.store = this.sellerService.getSellerProfile();
 
-    this.addProduct = { productName: '', category: '', brand: '', description: '', weight: '', availableQuantity: '', price: '', createdDate: '', expiryDate: '', store: this.store };
+    this.addProduct = { productName: '', category: '', brand: '', description: '', weight: '', availableQuantity: '', price: '',fileName:'', createdDate: '', expiryDate: '', store: this.store };
 
-    this.deleteProduct = { productName: '', category: '', brand: '', description: '', weight: '', availableQuantity: '', price: '', createdDate: '', expiryDate: '', store: this.store };
+    this.deleteProduct = { productName: '', category: '', brand: '', description: '', weight: '', availableQuantity: '', price: '',fileName:'', createdDate: '', expiryDate: '', store: this.store };
 
     this.subscription = timer(0, 1000).pipe(
       switchMap(() => this.sellerService.getAllproducts(this.sellerService.getSellerId()))
@@ -37,10 +42,11 @@ export class SellerDashboardComponent implements OnInit {
 
     this.imagePathList = '../../assets/images/eggs.jpg';
     this.productName = '';
+    this.imageurl='';
+    this.show=false;
   }
 
   ngOnInit(): void {
-
   }
 
   addProductToDB(): void {
@@ -61,7 +67,7 @@ export class SellerDashboardComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+   this.subscription.unsubscribe();
   }
 
   deleteProductConfirmation(product: any) {
@@ -78,6 +84,24 @@ export class SellerDashboardComponent implements OnInit {
 
   getProductByName(): any {
 
+  }
+
+  onSelectFile(event:any)
+  {
+    this.imageToUpload=event.target.files[0];
+    this.fileName=this.imageToUpload.name;
+    this.reader = new FileReader();
+    this.reader.onload = (e:any)=>{this.imageurl=e.target.result,this.show=true;};
+    this.reader.readAsDataURL(this.imageToUpload);
+  }
+
+  onUpload()
+  {
+    this.editProduct.fileName=this.fileName;
+    //this.sellerService.postFile(imageForm,this.imageToUpload).subscribe();
+    this.sellerService.updateProduct(this.editProduct).subscribe();
+    //this.sellerService.postFile(imageForm,this.imageToUpload).subscribe();
+    this.sellerService.postProductFile(this.imageToUpload).subscribe((data:any) => { console.log('done')});
   }
 
 }

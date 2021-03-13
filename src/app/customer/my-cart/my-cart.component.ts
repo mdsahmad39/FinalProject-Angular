@@ -12,7 +12,7 @@ import { CustomerService } from '../customer.service';
 })
 export class MyCartComponent implements OnInit {
 
-  cartProductsList$: Observable<[]> | undefined;
+  cartProductsList:any[]=[];
   totalPrice: number = 0;
   countEdit: number = 0;
   myOrder: any;
@@ -36,8 +36,8 @@ export class MyCartComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    this.cartService.getProductsInCart().subscribe((data: any) => this.cartProductsList$ = data);
-    console.log(this.cartProductsList$);
+    this.cartService.getProductsInCart().subscribe((result:any) => {for(var res of result ){this.cartProductsList.push(res)};});
+    console.log(this.cartProductsList);
   }
 
   placeOrder(): any {

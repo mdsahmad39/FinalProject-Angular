@@ -2,7 +2,7 @@
 <div class="row store-container">
   <div class="col-md-3" *ngFor="let store of storesList">
     <div class="store-card">
-      <img class="card-img-top" [src]="imagePath" alt="Card Image" />
+      <img class="card-img-top" src='{{"assets/images/storeImages/" + store.fileName}}' alt="Card Image" />
       <div class="cart-body">
         <p class="store-title">{{store.storeName}}
         </p>
