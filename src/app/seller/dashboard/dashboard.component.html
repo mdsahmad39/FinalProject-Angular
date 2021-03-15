@@ -117,6 +117,13 @@
               readonly>
             <br>
 
+            <label for="orderDetails" class="text-uppercase">upload product image</label>
+            <input class="form-control" type="file" #productImage accept="image/*" (change)="onSelectFile($event)"
+              name="orderDetails">
+            <button type="submit" class="button btn-light rounded" (click)="onUpload()">upload</button>
+            <div *ngIf="show"><img [src]="imageurl" style="height: 150px;width: 200px;"></div>
+            <br>
+
           </form>
         </div>
 
@@ -144,9 +151,9 @@
   </div>
   <div class="row" style="margin-top: 4px">
     <div class="col-md-3" *ngFor="let product of productsList" style="margin-top:15px;">
-      <div class="product-card">
+      <div class="product-card hvr-underline-from-center">
         <div class="cart-body" style="margin:5px;">
-          <img class="card-img-top" [src]="imagePathList" alt="Card Image" />
+          <img class="card-img-top" src='{{"assets/images/productImages/"+product.fileName}}' alt="Card Image" />
           <p><strong>{{product.productName}}</strong> <span style="float: right; margin-right: 10px;"><strong>Brand:
               </strong>
               {{product.brand}}</span></p>

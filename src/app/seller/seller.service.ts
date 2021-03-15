@@ -7,10 +7,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SellerService {
-
+ 
   private sellerLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   sellerId: any;
   seller: any;
+  newFileName:any
 
   constructor(public httpClient: HttpClient, public router: Router) {
     this.sellerId = 0;
@@ -21,7 +22,7 @@ export class SellerService {
   }
 
   async loginSeller(loginForm: any) {
-    await this.httpClient.get('loginSeller/' + loginForm.loginId + '/' + loginForm.password).toPromise().then((data: any) => { this.seller = data; });
+    await this.httpClient.get('/loginSeller/' + loginForm.loginId + '/' + loginForm.password).toPromise().then((data: any) => { this.seller = data; });
     if (this.seller) {
       this.sellerLoggedIn.next(true);
       this.router.navigate(['dashboardSeller']);
@@ -61,4 +62,25 @@ export class SellerService {
   deleteProduct(product: any): any {
     return this.httpClient.post('deleteProduct/', product);
   }
+
+  updateSellerProfile(seller: any) {
+    return this.httpClient.post('/updateSeller',seller);
+  }
+
+  postFile(fileToUpload: File): any {
+    // goes to rest api employee controller
+    const endpoint = 'uploadStoreImage';
+    const formData: FormData = new FormData();
+    formData.append('Image', fileToUpload, fileToUpload.name);
+    return this.httpClient.post(endpoint, formData);
+  }
+
+  postProductFile(fileToUpload: File): any {
+    // goes to rest api employee controller
+    const endpoint = 'uploadProductImage';
+    const formData: FormData = new FormData();
+    formData.append('Image', fileToUpload, fileToUpload.name);
+    return this.httpClient.post(endpoint, formData);
+  }
+
 }

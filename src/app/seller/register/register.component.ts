@@ -11,7 +11,8 @@ import { SellerService } from '../seller.service';
 export class SellerRegisterComponent implements OnInit {
 
   countriesList: any;
-  store:any
+  store:any;
+
   constructor(public sellerService: SellerService, public commonService: CommonService, public router: Router) { }
 
   ngOnInit(): void {
@@ -26,12 +27,14 @@ export class SellerRegisterComponent implements OnInit {
       sellerName:registerForm.sellerName,
       phoneNumber:registerForm.phoneNumber,
       emailId:registerForm.emailId,
+      fileName:'',
       loginId:registerForm.loginId,
       password:registerForm.password,
       address:{addressId:'',houseNo:registerForm.houseNo,street:registerForm.street,city:registerForm.city,pincode:registerForm.pincode,state:registerForm.state,country:registerForm.country}
     };
     this.sellerService.register(this.store).subscribe((result: any) => console.log(result));
-    this.router.navigate(['']);
+    //this.router.navigate(['']);
   }
+
 
 }
